@@ -1,0 +1,74 @@
+<h2>
+    Cliente</h2>
+<div class="jumbotron">
+    <form name="clienteForm">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-8">
+                    <label for="cliente"> Cliente</label>
+                    <select name="cliente" ng-model="client" ng-change="clienteSelect()" class="form-control">
+                        <option value="">Selecciona un cliente</option>
+                        <option ng-repeat="x in selectCliente" value="{{x.id}}">{{x.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <br>
+                    <button type="button" class="btn btn-primary" ng-click="nuevo()">Nuevo</button>
+                </div>
+                <div class="col-md-2">
+                    <br>
+                    <button type="button" class="btn btn-primary" ng-disabled="guardarBtn" ng-click="guardar()">Guardar</button>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="nombre"> Nombre:</label>
+                    <input type="text" ng-model="cliente.nombre" maxlength="50" class="form-control" ng-disabled="checked">
+                </div>
+                <div class="col-md-6">
+                    <label for="apellidos"> Apellidos:</label>
+                    <input type="text" ng-model="cliente.apellidos" maxlength="100" class="form-control" ng-disabled="checked">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="potencia"> Pot. Contrat.:</label>
+                    <input type="text" ng-model="cliente.potContratada" class="form-control" maxlength="4" numbers-only ng-disabled="checked">
+                </div>
+                <div class="col-md-6">
+                    <label for="cups"> Cups:</label>
+                    <input type="text" ng-model="cliente.cup" maxlength="22" class="form-control" ng-disabled="checked">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="button" class="btn btn-info" ng-disabled="editarBorrar" ng-click="editar()">Editar</button>
+                <button type="button" class="btn btn-danger" ng-disabled="editarBorrar" ng-click="borrar()">Borrar</button>
+                <button type="button" class="btn btn-warning" ng-disabled="cancelarBtn" ng-click="cancelar()">Cancelar</button>
+                <br>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-8">
+                        <label for="fileinput">Fichero carga</label>
+                        <input type="file" id="fileimput" accept=".csv" file-model="file" class="form-control" ng-disabled="filecheck">
+                    </div>
+                    <div class="col-md-3">
+                        <br>
+                        <button type="button" class="btn btn-primary" ng-disabled="filecheck" ng-click="cargar()">Cargar</button>
+                    </div>
+                </div>
+            </div>
+
+    </form>
+    </div>
+    <br>
+    <div class="jumbotron">
+        <canvas class="chart chart-bar" chart-data="grafData" chart-labels="etiquetas" chart-series="series"></canvas>
+    </div>
